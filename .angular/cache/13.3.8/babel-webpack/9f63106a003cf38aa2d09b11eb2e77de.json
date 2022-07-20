@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  token: '',\n  nome: '',\n  id: 0,\n  foto: ''\n};","map":null,"metadata":{},"sourceType":"module"}
