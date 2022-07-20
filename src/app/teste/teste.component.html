@@ -1,0 +1,46 @@
+<div class="example-container">
+    <h2>produtos</h2>
+  
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="produtos"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box container d-flex" *ngFor="let item of produtos" cdkDrag>
+        <div class="col-4">
+            <img src="https://i.imgur.com/3A0xE57.png" width="40px"height="40px" alt="">
+        </div>
+        <div class="col-4">
+            {{item}}
+        </div>
+        <div class="col-4">
+            Preço: R$ 20,00
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
+  
+  <div class="example-container">
+    <h2>Carrinho</h2>
+  
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="carrinho"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of carrinho" cdkDrag>
+        <div class="col-4">
+            {{item}}
+        </div>
+        <div class="col-4">
+            Preço: R$ 20,00
+        </div>
+    </div>
+    </div>
+  </div>

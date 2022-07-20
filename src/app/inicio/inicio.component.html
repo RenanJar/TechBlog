@@ -1,0 +1,195 @@
+<div class="container-fluid">
+
+    <div class="row background d-flex align-items-center">
+        <div class="col-md-5 d-flex justify-content-center">
+            <img src="https://i.imgur.com/G3qLtNr.jpg" alt="" width="400px" height="500px">
+
+        </div>
+
+        <div class="col-md-6 text-white container justify-content-center">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 text-white pt-5">
+                    <h1 class="fs-54">Seja bem vindo(a)! </h1>
+                    <h5 class="fs-18">expresse aqui os seus pensamentos e opniões!</h5>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center mt-3 mb-5">
+                <div class="col-md-6">
+                    <div class="row">
+                        <button class="btn btn-light me-3 fs-10 d-flex" data-bs-toggle="modal"
+                            data-bs-target="#novaPostagem"> Nova Postagem</button>
+                        <a class="btn btn-outline-info fs-10 text-center" href="#postagens">Ver Postagem</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container mb-5 mt-5" id="postagens">
+    <div>
+        <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-secondary font-weight-bold" id="home-tab" data-bs-toggle="tab"
+                    data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"
+                    href="#todasPostagens">
+                    Todas as Postagens</button>
+
+            </li>
+            <li class="nav-item" role="presentation">
+                <button (click)="findByIdUsuario()" class="nav-link text-secondary font-weight-bold" id="profile-tab"
+                    data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                    aria-selected="false">Minhas Postagens</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button (click)="getAllPostagens()" class="nav-link text-secondary font-weight-bold" id="contact-tab"
+                    data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                    aria-selected="false">Postagens por tema</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                <div class="row d-flex  mt-3">
+                    <div class="col-lg-4 col-sm-4" *ngFor="let item of listaPostagem">
+                        <div class="card text-dark bg-light mb-3 d-flex justify-content-center ">
+                            <div class="card-header">{{item.titulo}}</div>
+                            <div class="card-body">
+                                <p class="card-text">{{item.texto}}</p>
+                                <p class="card-text ">{{item.data|date: 'dd/MM/yyyy'}}</p>
+
+                                <div class="d-flex justify-content-end">
+
+                                    <a [routerLink]="['/postagem-edit', item.id]" class="text-dark me-3" href="">
+                                        <img src="https://i.imgur.com/yX1agBm.png" width="20px" alt="">
+                                    </a>
+                                    <a  [routerLink]="['/postagem-delete',item.id]" class="text-danger me-3">
+                                        
+                                        <img src="https://i.imgur.com/puH4WCt.png" width="20px" alt="">
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                <div class="row d-flex  mt-3">
+                    <div class="col-lg-4 col-sm-4" *ngFor="let item of usuario.postagem">
+                        <div class="card text-white bg-primary mb-3 d-flex justify-content-center ">
+                            <div class="card-header">{{item.titulo}}</div>
+                            <div class="card-body">
+                                <p class="card-text">{{item.texto}}</p>
+                                <p class="card-text ">{{item.data|date: 'dd/MM/yyyy'}}</p>
+                                <div class="d-flex justify-content-end">
+
+                                    <a [routerLink]="['/postagem-edit', item.id]" class="text-dark me-3" href="">
+                                        <img src="https://i.imgur.com/yX1agBm.png" width="20px" alt="">
+                                    </a>
+                                    <a [routerLink]="['/postagem-delete',item.id]" class="text-danger me-3">
+                                        
+                                        <img src="https://i.imgur.com/puH4WCt.png" width="20px" alt="">
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                <div class="row d-flex align-items-center mt-3 d-flex justify-content-center">
+                    <div class="col-lg-2 col-sm-2 w-auto " *ngFor="let item of listaTemas">
+                        <button type="button" (click)='findTemaID(item.id)'
+                            class="btn btn-outline-primary">{{item.descricao}}</button>
+                    </div>
+                </div>
+
+                <div class="row d-flex mt-3">
+                    <div class="col-lg-4 col-sm-4" *ngFor="let item of tema.postagem">
+                        <div class="card text-dark bg-warning mb-3 d-flex justify-content-center ">
+                            <div class="card-header text-truncate">{{item.titulo}}
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text ">{{item.texto}}</p>
+                                <p class="card-text ">{{item.data|date: 'dd/MM/yyyy'}}</p>
+                                <p class="card-text">by: {{item.usuario.nome}}</p>
+                                <div class="d-flex justify-content-end">
+                                    <div class="d-flex justify-content-end">
+                                        <a [routerLink]="['/postagem-edit', item.id]" class="text-dark me-3" href="">
+                                            <img src="https://i.imgur.com/yX1agBm.png" width="20px" alt="">
+                                        </a>
+                                        <a  [routerLink]="['/postagem-delete',item.id]" class="text-danger me-3">
+                                            
+                                            <img src="https://i.imgur.com/puH4WCt.png" width="20px" alt="">
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="novaPostagem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Nova Postagem</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="titulo">Titulo</label>
+                        <input [(ngModel)]='postagem.titulo' type="text" class="form-control" id="titulo"
+                            placeholder="Digite o título">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="texto">texto</label>
+                        <textarea [(ngModel)]='postagem.texto' class="form-control" name="texto" id="texto"
+                            rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="texto">escolha um tema ou <a href=""> cadastre um novo</a>:</label>
+                        <select name="tema" id="tema" class="form-control" [(ngModel)]='idTema'
+                            (change)="findByIdTema()">
+                            <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.descricao}}</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" routerLink="/tema" data-bs-dismiss="modal">Cadastrar
+                        Tema</button>
+                    <button type="button" class="btn btn-success" (click)="publicar()"
+                        data-bs-dismiss="modal">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

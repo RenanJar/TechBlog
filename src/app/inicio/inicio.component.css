@@ -1,0 +1,37 @@
+.background{
+    background-color: #17284B;
+}
+
+.text-white{
+    color: white;
+}
+
+.fs-54{
+    font-size: 30px;
+}
+
+.fs-18{
+    font-size: 18px;
+}
+
+.fs-10{
+    font-size: 8pt;
+    text-align: center;
+    display: flex;
+    width: 90px;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-light{
+    height: 90px;
+}
+
+.btn-outline-info{
+    height: 90px;
+}
+
+.pading0{
+    padding: 0 !important;
+}
