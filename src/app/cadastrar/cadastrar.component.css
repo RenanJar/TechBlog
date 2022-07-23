@@ -1,26 +1,23 @@
-
 .letrabranca{
-    color: white;
+  color: white;
 }
 
 #img-bg
 {
-  background-image: url('https://i.imgur.com/oZnflJe.jpg');
+background-image: url('https://i.imgur.com/oZnflJe.jpg');
 
-  min-height: 695px;
 
-  background-position:bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
+height: 100vh;
+
+background-position:bottom;
+background-repeat: no-repeat;
+background-size: cover;
 }
 
-.btn-success {
-  color: #fff;
-  background-color: #198754;
-  border-color: #198754;
-  height: 90px;
-}
+
 
 .background{
-    background-color: #17284B;
+  background-color: #17284B;
+  height: 100vh;
 }
+
