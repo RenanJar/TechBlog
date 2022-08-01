@@ -32,6 +32,15 @@ export class CadastrarComponent implements OnInit {
   }
 
   cadastrar(){
+
+    if(this.confirmSenha.length < 8){
+      alert('Senha pequena, minimo de 8 digitos!')
+    }
+
+    if(this.usuario.usuario == ""||this.usuario.nome ==""){
+      alert('Campo Nome ou Usuario inválidos')
+    }
+
     if(this.usuario.senha != this.confirmSenha){
       alert('senhas divergentes')
     }else{

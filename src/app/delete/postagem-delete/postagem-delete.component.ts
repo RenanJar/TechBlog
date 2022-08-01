@@ -33,6 +33,7 @@ export class PostagemDeleteComponent implements OnInit {
     this.findByIdPostagem(this.idPost)
 
   }
+  
   findByIdPostagem(id: number) {
     this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
       this.postagem = resp

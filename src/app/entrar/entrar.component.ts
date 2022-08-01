@@ -23,7 +23,14 @@ export class EntrarComponent implements OnInit {
     if(environment.token != ''){
       environment.token=''
     }
+    this.alertParaRecruiters()
     window.scroll(0,0)
+  }
+
+  alertParaRecruiters(){
+   alert('Seja bem vindo(a) ao projeto TechBlog. O presente projeto é hospedado em um servidor gratuito,' 
+   +'sendo assim, ele pode demorar um pouquinho para responder as requisições,'+ 
+   ' caso não queira se cadastrar, aqui vai um login para testes!!!  login: teste@gmail.com senha: 123456789 Obrigado!')
   }
 
   entrar(){
